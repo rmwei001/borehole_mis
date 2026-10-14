@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BillingController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PlotController;
 use Illuminate\Http\Request;
@@ -17,8 +18,14 @@ Route::get('/get_plots', [PlotController::class, 'readAllPlots']);
 Route::get('get_plot/{id}', [PlotController::class, 'readPlot']);
 Route::post('/update_plot/{id}', [PlotController::class, 'updatePlot']);
 Route::delete('/delete_plot/{id}', [PlotController::class, 'deletePlot']);
-Route::get('search_location/{name}', [PlotController::class, 'searchPlot']);
+Route::get('search_plot/{name}', [PlotController::class, 'searchPlot']);
 
+Route::post('/save_billing',[BillingController::class, 'createBilling']);
+Route::get('/get_billings', [BillingController::class, 'readAllBillings']);
+Route::get('get_billing/{id}', [BillingController::class, 'readBilling']);
+Route::post('/update_billing/{id}', [BillingController::class, 'updateBilling']);
+Route::delete('/delete_billing/{id}', [BillingController::class, 'deleteBilling']);
+Route::get('search_billing/{name}', [BillingController::class, 'searchBilling']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
