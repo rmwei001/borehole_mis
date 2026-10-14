@@ -101,13 +101,13 @@ class BillingController extends Controller
     }
      public function deleteBilling($id){
         try{
-            $plot = Billing::where('id', $id)->first();
+            $billing = Billing::where('id', $id)->first();
 
-            if(!$plot){
+            if(!$billing){
                 return response()->json("Record does not exist");
             }
 
-            $plot->delete();
+            $billing->delete();
             return response()->json("Plot deleted successfully");
         }catch(\Exception $e){
             return response()->json([

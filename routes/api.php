@@ -3,6 +3,7 @@
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PlotController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,13 @@ Route::get('get_billing/{id}', [BillingController::class, 'readBilling']);
 Route::post('/update_billing/{id}', [BillingController::class, 'updateBilling']);
 Route::delete('/delete_billing/{id}', [BillingController::class, 'deleteBilling']);
 Route::get('search_billing/{name}', [BillingController::class, 'searchBilling']);
+
+Route::post('/save_payment',[PaymentController::class, 'createPayment']);
+Route::get('/get_payments', [PaymentController::class, 'readAllPayments']);
+Route::get('get_payment/{id}', [PaymentController::class, 'readPayment']);
+Route::post('/update_payment/{id}', [PaymentController::class, 'updatePayment']);
+Route::delete('/delete_payment/{id}', [PaymentController::class, 'deletePayment']);
+Route::get('search_payment/{name}', [PaymentController::class, 'searchPayment']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
